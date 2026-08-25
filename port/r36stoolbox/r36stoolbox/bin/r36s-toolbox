@@ -1,0 +1,66 @@
+#!/bin/bash
+# R36S Toolbox — menu principal
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+MODULE_DIR="$(cd "$SCRIPT_DIR/../modules" && pwd)"
+. "$SCRIPT_DIR/../lib/common.sh"
+
+run_module() {
+  local module="$1"; shift
+  [ -x "$MODULE_DIR/$module" ] || { show_message "R36S Toolbox" "Módulo ausente:\n$MODULE_DIR/$module"; return 1; }
+  "$MODULE_DIR/$module" "$@"
+}
+
+show_about() {
+  show_message "Sobre o R36S Toolbox" "Ferramentas de diagnóstico e manutenção conservadora para R36S/dArkOS.\n\nA primeira versão não altera kernel, DTB, U-Boot, ROMs ou BIOS.\n\nMódulos: diagnóstico, controles, telemetria, perfis, backup, rede, manutenção, ports e CPU experimental."
+}
+
+main_menu() {
+  local choice
+  while true; do
+    choice="$(menu_choice "R36S Toolbox" "Escolha uma ferramenta:" \
+      1 "Diagnóstico completo" \
+      2 "Teste de controles" \
+      3 "Monitorar temperatura/CPU/memória" \
+      4 "Perfis de CPU" \
+      5 "Backup e restauração" \
+      6 "Rede e conectividade" \
+      7 "Manutenção e armazenamento" \
+      8 "Verificar ports" \
+      9 "CPU experimental (protegido)" \
+      0 "Sair para o menu Ports" \
+      10 "Sobre o Toolbox")" || return 0
+    case "$choice" in
+      1) run_module diagnostic.sh ;;
+      2) run_module controls.sh ;;
+      3) run_module monitor.sh ;;
+      4) run_module profiles.sh ;;
+      5) run_module backup.sh ;;
+      6) run_module network.sh ;;
+      7) run_module maintenance.sh ;;
+      8) run_module portcheck.sh ;;
+      9) run_module overclock.sh menu ;;
+      0) return 0 ;;
+      10) show_about ;;
+      *) show_message "R36S Toolbox" "Opção inválida." ;;
+    esac
+  done
+}
+
+case "${1:-menu}" in
+  diagnostic|diag) run_module diagnostic.sh ;;
+  controls) run_module controls.sh ;;
+  monitor) run_module monitor.sh ;;
+  profile) run_module profiles.sh "${2:-menu}" ;;
+  backup) run_module backup.sh "${2:-menu}" "${3:-}" ;;
+  network) run_module network.sh ;;
+  maintenance) run_module maintenance.sh "${2:-menu}" ;;
+  ports|portcheck) run_module portcheck.sh ;;
+  cpu-experimental) run_module overclock.sh "${2:-status}" "${3:-}" ;;
+  about) show_about ;;
+  self-test) "$SCRIPT_DIR/../tests/self-test.sh" ;;
+  *)
+    setup_display
+    trap cleanup_display EXIT INT TERM
+    main_menu
+    ;;
+esac

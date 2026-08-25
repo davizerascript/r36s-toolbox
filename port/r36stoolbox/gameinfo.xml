@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gameList>
+  <game>
+    <path>./R36S Toolbox.sh</path>
+    <name>R36S Toolbox</name>
+    <desc>Ferramentas de diagnóstico, manutenção, backup, rede, controles e perfis reversíveis para R36S com dArkOS ou ArkOS. A opção 0 e o botão B no menu principal saem para o menu Ports.</desc>
+    <releasedate>20260825T000000</releasedate>
+    <developer>Manus AI</developer>
+    <publisher>Manus AI</publisher>
+    <genre>Utility</genre>
+    <image>./screenshot.png</image>
+  </game>
+</gameList>

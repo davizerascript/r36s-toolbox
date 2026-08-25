@@ -1,0 +1,13 @@
+R36S Toolbox — NOTICE
+
+Este port contém scripts e arquivos de configuração criados para este projeto.
+
+O launcher usa componentes fornecidos pelo sistema/PortMaster quando presentes, incluindo control.txt, get_controls, GPTOKEYB, pm_platform_helper e pm_finish. Esses componentes não são redistribuídos neste arquivo; consulte a distribuição do PortMaster instalada no aparelho.
+
+O mapa toolbox.gptk segue a sintaxe documentada pelo projeto gptokeyb:
+https://portmaster.games/gptokeyb-documentation.html
+
+A estrutura de empacotamento segue a documentação do PortMaster:
+https://portmaster.games/packaging.html
+
+Não há ROMs, BIOS, credenciais, tokens, chaves Wi-Fi ou conteúdo de vídeo incluído neste port.

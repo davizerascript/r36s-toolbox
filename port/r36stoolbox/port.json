@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "name": "r36stoolbox.zip",
+  "items": [
+    "R36S Toolbox.sh",
+    "r36stoolbox/"
+  ],
+  "items_opt": null,
+  "attr": {
+    "title": "R36S Toolbox",
+    "desc": "Diagnóstico e manutenção segura para R36S e sistemas ArkOS/dArkOS.",
+    "inst": "Pronto para executar. Faça backup do cartão antes de testar o módulo experimental de CPU.",
+    "genres": [
+      "utility"
+    ],
+    "porter": [
+      "Manus AI"
+    ],
+    "image": {},
+    "rtr": true,
+    "runtime": null,
+    "reqs": [],
+    "arch": [
+      "aarch64"
+    ]
+  }
+}

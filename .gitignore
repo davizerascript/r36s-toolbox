@@ -1,0 +1,16 @@
+# Artefatos gerados localmente
+build/*
+*.zip
+*.tar.gz
+*.sha256
+__pycache__/
+.DS_Store
+
+# Estado gerado pelo Toolbox no aparelho
+conf/
+state/
+reports/
+backups/
+cache/
+runtime/
+log.txt
